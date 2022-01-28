@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Football Registration Form</title>
+    <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="text-center my-4">Football Registration Form</h2>
+        <div class="container">
+            <div class="row g-3 my-3">
+                <div class="col-md-4">
+                    <label for="userName" class="form-label">Username <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="userName" placeholder="Set your username" value=""
+                        required="" />
+                    <div class="invalid-feedback">Username is already taken.</div>
+                </div>
+                <div class="col-md-4"> <label for="firstName" class="form-label">First name <span
+                            class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="firstName" placeholder="Your first name ?" value=""
+                        required="" />
+                    <div class="invalid-feedback">Valid first name is required.</div>
+                </div>
+                <div class="col-md-4"> <label for="lastName" class="form-label">Last name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Your last name ?" value=""
+                        required="" />
+                    <div class="invalid-feedback">Valid last name is required.</div>
+                </div>
+            </div>
+            <div class="row g-3 my-3">
+                <div class="col-md-4">
+                    <label for="phone" class="form-label">Phone <span class="text-danger">*</span></label>
+                    <div class="input-group">
+                        <select class="form-select bg-light" id="country-code"></select>
+                        <input type="tel" class="form-control" id="phone" placeholder="Hotline to bling ?" value=""
+                            required="" />
+                    </div>
+                    <div class="invalid-feedback">Valid phone number is required.</div>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-flex justify-content-between">
+                        <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" checked="">
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" id="email" placeholder="Your email address ?" value=""
+                        required="" />
+                    <div class="invalid-feedback">Valid email is required.</div>
+                </div>
+                <div class="col-md-4"> <label for="ageGroup" class="form-label">Age Group <span
+                            class="text-danger">*</span></label>
+                    <select class="form-select" aria-label="ageGroup" id="ageGroup">
+                        <option value="21 - 30" selected disabled hidden>Select age group</option>
+                        <option value="15 - 20">15 - 20 years</option>
+                        <option value="21 - 30">21 - 30 years</option>
+                        <option value="31 - 40">31 - 40 years</option>
+                        <option value="41 - 50">41 - 50 years</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row g-3 my-5">
+                <div class="col-md-3">
+                    <label for="desiredTeam" class="form-label">Desired Team <span class="text-danger">*</span></label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="desiredTeam" id="chelsea" value="Chelsea">
+                        <label class="form-check-label" for="chelsea">
+                            Chelsea
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="desiredTeam" id="manchester-united"
+                            value="Manchester United">
+                        <label class="form-check-label" for="manchester-united">
+                            Manchester United
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="desiredTeam" id="liverpool"
+                            value="Liverpool">
+                        <label class="form-check-label" for="liverpool">
+                            Liverpool
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="desiredTeam" id="barcelona"
+                            value="Barcelona">
+                        <label class="form-check-label" for="barcelona">
+                            Barcelona
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="desiredPosition" class="form-label">Desired Position <span
+                            class="text-danger">*</span></label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="goal-keeper">
+                        <label class="form-check-label" for="goal-keeper">
+                            Goal Keeper
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="offensive">
+                        <label class="form-check-label" for="offensive">
+                            Offensive
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defensive">
+                        <label class="form-check-label" for="defensive">
+                            Defensive
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="receiver">
+                        <label class="form-check-label" for="receiver">
+                            Receiver
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-3"><label for="address" class="form-label">Address</label>
+                    <textarea class="form-control" id="address" rows="3" placeholder="Your address ?"></textarea>
+                </div>
+                <div class="col-md-3"><label for="pin-code" class="form-label">Pincode</label>
+                    <input type="tel" class="form-control" id="pin-code" placeholder="Your pincode ?" value=""
+                        required="" />
+                    <div class="invalid-feedback">Valid pincode is required.</div>
+                </div>
+            </div>
+            <div class="d-grid col-md-5 mx-auto my-5">
+                <div class="form-group my-2">
+                    <label for="country" class="form-label">Country</label>
+                    <select class="form-select" aria-label="Country" id="country" disabled>
+                        <option selected disabled hidden>Select the country</option>
+                    </select>
+                </div>
+                <div class="form-group my-2">
+                    <label for="state" class="form-label">State</label>
+                    <select class="form-select" aria-label="State" id="state" disabled>
+                        <option selected hidden>Select the country first</option>
+                    </select>
+                </div>
+                <div class="form-group my-2">
+                    <label for="city" class="form-label">City</label>
+                    <select class="form-select" aria-label="City" id="city" disabled>
+                        <option selected hidden>Select the state first</option>
+                    </select>
+                </div>
+            </div>
+            <div class="d-grid col-md-3 mx-auto my-5">
+                <button class="btn btn-primary" type="button">Let's Goal!</button>
+            </div>
+        </div>
+    </div>
+    <script src="assets/bootstrap/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
