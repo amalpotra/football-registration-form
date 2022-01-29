@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					countries.appendChild(optionCountry)
 				})
 
+			countryCodes.removeAttribute('disabled')
 			countries.removeAttribute('disabled')
 
 			// Setting +91 as default
