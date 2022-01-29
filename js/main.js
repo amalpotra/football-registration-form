@@ -2,6 +2,8 @@ countries = document.getElementById('country')
 states = document.getElementById('state')
 cities = document.getElementById('city')
 countryCodes = document.getElementById('country-code')
+email = document.getElementById('email')
+emailSwitch = document.getElementById('email-switch')
 
 let countryData = []
 
@@ -115,3 +117,9 @@ const resetSelect = (node, from) => {
 
 	node.appendChild(option)
 }
+
+emailSwitch.addEventListener('change', () => {
+	email.hasAttribute('disabled')
+		? email.removeAttribute('disabled')
+		: email.setAttribute('disabled', '')
+})
