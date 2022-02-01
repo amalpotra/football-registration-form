@@ -11,154 +11,162 @@
 </head>
 
 <body>
-    <div class="container">
-        <h2 class="text-center my-4">Football Registration Form</h2>
-        <div class="container">
-            <div class="row g-3 my-3">
-                <div class="col-md-4">
-                    <label for="userName" class="form-label">Username <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="userName" placeholder="Set your username" value=""
-                        required="" />
+    <h2 class="text-center mt-3 mb-4">Football Registration Form</h2>
+    <div class="container rounded border bg-white mb-4">
+        <form id="form" novalidate>
+            <div class="row">
+                <div class="col-md-4 border-bottom border-end">
+                    <label for="userName" class="form-label">USERNAME <sup class="text-danger">*</sup></label>
+                    <input type="text" class="form-control" id="userName" placeholder="Enter username" />
                     <div class="invalid-feedback">Username is already taken.</div>
                 </div>
-                <div class="col-md-4"> <label for="firstName" class="form-label">First name <span
-                            class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="firstName" placeholder="Your first name ?" value=""
-                        required="" />
+                <div class="col-md-4 border-bottom border-end"> <label for="firstName" class="form-label">FIRST NAME
+                        <sup class="text-danger">*</sup></label>
+                    <input type="text" class="form-control" id="firstName" placeholder="What is your first name?" />
                     <div class="invalid-feedback">Valid first name is required.</div>
                 </div>
-                <div class="col-md-4"> <label for="lastName" class="form-label">Last name</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="Your last name ?" value=""
-                        required="" />
+                <div class="col-md-4 border-bottom"> <label for="lastName" class="form-label">LAST NAME</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="What is your last name?" />
                     <div class="invalid-feedback">Valid last name is required.</div>
                 </div>
             </div>
-            <div class="row g-3 my-3">
-                <div class="col-md-4">
-                    <label for="phone" class="form-label">Phone <span class="text-danger">*</span></label>
+            <div class="row">
+                <div class="col-md-4 border-bottom border-end">
+                    <label for="phone" class="form-label">PHONE NUMBER <sup class="text-danger">*</sup></label>
                     <div class="input-group">
-                        <select class="form-select bg-light" id="country-code" disabled></select>
-                        <input type="tel" class="form-control" id="phone" placeholder="Hotline to bling ?" value=""
-                            required="" />
+                        <select class="form-select bg-light" id="countryCode" disabled></select>
+                        <input type="tel" class="form-control rounded-end" id="phone"
+                            placeholder="What is the best # to reach you?" maxlength="10" />
+                        <div class="invalid-feedback">Valid 10 digit number is required.</div>
                     </div>
-                    <div class="invalid-feedback">Valid phone number is required.</div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 border-bottom border-end">
                     <div class="d-flex justify-content-between">
-                        <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                        <label for="email" class="form-label">EMAIL <sup class="text-danger">*</sup></label>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" id="email-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="emailSwitch">
                         </div>
                     </div>
-                    <input type="text" class="form-control" id="email" placeholder="Your email address ?" value=""
-                        required="" disabled />
+                    <input type="text" class="form-control" id="email" placeholder="What is your e-mail address?"
+                        disabled />
                     <div class="invalid-feedback">Valid email is required.</div>
                 </div>
-                <div class="col-md-4"> <label for="ageGroup" class="form-label">Age Group <span
-                            class="text-danger">*</span></label>
+                <div class="col-md-4 border-bottom">
+                    <label for="ageGroup" class="form-label">AGE GROUP <sup class="text-danger">*</sup></label>
                     <select class="form-select" aria-label="ageGroup" id="ageGroup">
-                        <option value="21 - 30" selected disabled hidden>Select age group</option>
+                        <option value="" selected disabled hidden>Select age group</option>
                         <option value="15 - 20">15 - 20 years</option>
                         <option value="21 - 30">21 - 30 years</option>
                         <option value="31 - 40">31 - 40 years</option>
                         <option value="41 - 50">41 - 50 years</option>
                     </select>
+                    <div class="invalid-feedback">Age group is required.</div>
                 </div>
             </div>
-            <div class="row g-3 my-5">
-                <div class="col-md-3">
-                    <label for="desiredTeam" class="form-label">Desired Team <span class="text-danger">*</span></label>
-                    <div class="form-check">
+            <div class="row">
+                <div class="col-md-3 border-bottom border-end">
+                    <label for="desiredTeam" class="form-label">DESIRED TEAM <sup class="text-danger">*</sup></label>
+                    <div class="form-check mb-3 mt-2">
                         <input class="form-check-input" type="radio" name="desiredTeam" id="chelsea" value="Chelsea">
                         <label class="form-check-label" for="chelsea">
-                            Chelsea
+                            CHELSEA
                         </label>
                     </div>
-                    <div class="form-check">
+                    <div class="form-check mb-3">
                         <input class="form-check-input" type="radio" name="desiredTeam" id="manchester-united"
                             value="Manchester United">
                         <label class="form-check-label" for="manchester-united">
-                            Manchester United
+                            MANCHESTER UNITED
                         </label>
                     </div>
-                    <div class="form-check">
+                    <div class="form-check mb-3">
                         <input class="form-check-input" type="radio" name="desiredTeam" id="liverpool"
                             value="Liverpool">
                         <label class="form-check-label" for="liverpool">
-                            Liverpool
+                            LIVERPOOL
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="desiredTeam" id="barcelona"
                             value="Barcelona">
                         <label class="form-check-label" for="barcelona">
-                            Barcelona
+                            BARCELONA
                         </label>
+                        <div class="invalid-feedback">Desired team is required.</div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <label for="desiredPosition" class="form-label">Desired Position <span
-                            class="text-danger">*</span></label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="goal-keeper">
+                <div class="col-md-3 border-bottom border-end">
+                    <label for="desiredPosition" class="form-label">DESIRED POSITION <sup
+                            class="text-danger">*</sup></label>
+                    <div class="form-check mb-3 mt-2">
+                        <input class="form-check-input" type="checkbox" name="desiredPosition" value="goal-keeper"
+                            id="goal-keeper">
                         <label class="form-check-label" for="goal-keeper">
-                            Goal Keeper
+                            GOAL KEEPER
                         </label>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="offensive">
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" name="desiredPosition" value="offensive"
+                            id="offensive">
                         <label class="form-check-label" for="offensive">
-                            Offensive
+                            OFFENSIVE
                         </label>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defensive">
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" name="desiredPosition" value="defensive"
+                            id="defensive">
                         <label class="form-check-label" for="defensive">
-                            Defensive
+                            DEFENSIVE
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="receiver">
+                        <input class="form-check-input" type="checkbox" name="desiredPosition" value="receiver"
+                            id="receiver">
                         <label class="form-check-label" for="receiver">
-                            Receiver
+                            RECEIVER
                         </label>
+                        <div class="invalid-feedback">Desired position is required.</div>
                     </div>
                 </div>
-                <div class="col-md-3"><label for="address" class="form-label">Address</label>
-                    <textarea class="form-control" id="address" rows="3" placeholder="Your address ?"></textarea>
+                <div class="col-md-3 d-flex flex-column border-bottom border-end">
+                    <label for="address" class="form-label">ADDRESS</label>
+                    <textarea class="form-control" id="address" rows="5"></textarea>
                 </div>
-                <div class="col-md-3"><label for="pin-code" class="form-label">Pincode</label>
-                    <input type="tel" class="form-control" id="pin-code" placeholder="Your pincode ?" value=""
-                        required="" />
-                    <div class="invalid-feedback">Valid pincode is required.</div>
+                <div class="col-md-3 border-bottom">
+                    <label for="pincode" class="form-label">PINCODE</label>
+                    <input type="text" inputmode="numeric" class="form-control" id="pincode"
+                        placeholder="Enter your Pin code" maxlength="6" />
+                    <div class="invalid-feedback">Valid 6 digit pincode is required.</div>
                 </div>
             </div>
-            <div class="d-grid col-md-5 mx-auto my-5">
+            <div class="d-grid col-md-6 px-3 mx-auto my-4">
                 <div class="form-group my-2">
-                    <label for="country" class="form-label">Country</label>
+                    <label for="country" class="form-label">COUNTRY <sup class="text-danger">*</sup></label>
                     <select class="form-select" aria-label="Country" id="country" disabled>
-                        <option selected disabled hidden>Select the country</option>
+                        <option value="" selected disabled hidden>Select the country</option>
                     </select>
+                    <div class="invalid-feedback">Country is required.</div>
                 </div>
                 <div class="form-group my-2">
-                    <label for="state" class="form-label">State</label>
+                    <label for="state" class="form-label">STATE <sup class="text-danger">*</sup></label>
                     <select class="form-select" aria-label="State" id="state" disabled>
-                        <option selected hidden>Select the country first</option>
+                        <option value="" selected disabled hidden>Select the state</option>
                     </select>
+                    <div class="invalid-feedback">State is required.</div>
                 </div>
-                <div class="form-group my-2">
-                    <label for="city" class="form-label">City</label>
+                <div class="form-group my-2 mb-5">
+                    <label for="city" class="form-label">CITY <sup class="text-danger">*</sup></label>
                     <select class="form-select" aria-label="City" id="city" disabled>
-                        <option selected hidden>Select the state first</option>
+                        <option value="" selected disabled hidden>Select the city</option>
                     </select>
+                    <div class="invalid-feedback">City is required.</div>
                 </div>
             </div>
-            <div class="d-grid col-md-3 mx-auto my-5">
-                <button class="btn btn-primary" type="button">Let's Goal!</button>
+            <div class="d-grid col-md-4 mx-auto">
+                <button class="btn btn-success">Phewww! Let's submit it</button>
             </div>
-        </div>
+        </form>
     </div>
-    <script src="assets/bootstrap/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 
