@@ -21,9 +21,14 @@ let countryData = []
 
 // Wait for DOM to load before fetching API
 document.addEventListener('DOMContentLoaded', () => {
-	fetch('https://countriesnow.space/api/v0.1/countries/codes')
+	fetch('https://countriesnow.space/api/v0.1/countries/codes', {
+		method: 'GET',
+		redirect: 'follow',
+	})
 		.then((response) => response.json())
 		.then((data) => {
+			if (data.error) throw new Error('Something went wrong!')
+
 			data.data
 				.filter((country) => !country.dial_code.includes(' '))
 				.map((country) => {
@@ -71,9 +76,13 @@ countries.addEventListener('change', () => {
 			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify({ country: countries.value }),
+		redirect: 'follow',
 	})
 		.then((response) => response.json())
 		.then((data) => {
+			console.log(data)
+			if (data.error) throw new Error('Something went wrong!')
+
 			resetSelect(states)
 
 			data.data.states.map((state) => {
@@ -101,9 +110,12 @@ states.addEventListener('change', () => {
 			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify({ country: countries.value, state: states.value }),
+		redirect: 'follow',
 	})
 		.then((response) => response.json())
 		.then((data) => {
+			if (data.error) throw new Error('Something went wrong!')
+
 			resetSelect(cities)
 
 			data.data.map((city) => {
@@ -193,6 +205,7 @@ const validateState = () =>
 const validateCity = () =>
 	cities.value ? setValid(cities) : setInvalid(cities)
 
+// Helpers for setting valid/invalid class to elements
 const setValid = (node) => {
 	node.classList.replace('is-invalid', 'is-valid') &&
 		setTimeout(() => {
@@ -206,11 +219,11 @@ const setInvalid = (node) => {
 	return false
 }
 
+// Event listeners for validations
 userName.addEventListener('input', () => {
-	// Some validation calls here
+	// Left off as per backend implementation
 })
 
-// Event listeners for validations
 firstName.addEventListener(
 	'input',
 	debounce(() => validateFirstName())
