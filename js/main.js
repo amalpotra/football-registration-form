@@ -16,8 +16,24 @@ const countries = id('country')
 const states = id('state')
 const cities = id('city')
 const form = id('form')
+const submitButton = id('submitButton')
 
-let countryData = []
+const countryData = []
+
+const validFields = [
+	{ name: 'firstName', isValid: false },
+	{ name: 'lastName', isValid: true },
+	{ name: 'phone', isValid: false },
+	{ name: 'email', isValid: false },
+	{ name: 'ageGroup', isValid: false },
+	{ name: 'desiredTeam', isValid: false },
+	{ name: 'desiredPosition', isValid: false },
+	{ name: 'address', isValid: true },
+	{ name: 'pincode', isValid: true },
+	{ name: 'country', isValid: false },
+	{ name: 'state', isValid: false },
+	{ name: 'city', isValid: false },
+]
 
 // Wait for DOM to load before fetching API
 document.addEventListener('DOMContentLoaded', () => {
@@ -80,7 +96,6 @@ countries.addEventListener('change', () => {
 	})
 		.then((response) => response.json())
 		.then((data) => {
-			console.log(data)
 			if (data.error) throw new Error('Something went wrong!')
 
 			resetSelect(states)
@@ -211,11 +226,24 @@ const setValid = (node) => {
 		setTimeout(() => {
 			node.classList.remove('is-valid')
 		}, 3000)
+
+	validFields.find(
+		(field) => field.name === node.id || field.name === node.name
+	).isValid = true
+	!validFields.find((field) => field.isValid === false) &&
+		submitButton.removeAttribute('disabled')
+
 	return true
 }
 
 const setInvalid = (node) => {
 	node.classList.add('is-invalid')
+
+	validFields.find(
+		(field) => field.name === node.id || field.name === node.name
+	).isValid = false
+	submitButton.setAttribute('disabled', '')
+
 	return false
 }
 
