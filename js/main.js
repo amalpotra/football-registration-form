@@ -28,7 +28,6 @@ const validFields = [
 	{ name: 'ageGroup', isValid: false },
 	{ name: 'desiredTeam', isValid: false },
 	{ name: 'desiredPosition', isValid: false },
-	{ name: 'address', isValid: true },
 	{ name: 'pincode', isValid: true },
 	{ name: 'country', isValid: false },
 	{ name: 'state', isValid: false },
@@ -98,23 +97,27 @@ countries.addEventListener('change', () => {
 		.then((data) => {
 			if (data.error) throw new Error('Something went wrong!')
 
-			resetSelect(states)
+			if (!data.data.states.length) {
+				resetSelect(states, 'null')
+				resetSelect(cities, 'null')
+				states.setAttribute('disabled', '')
+			} else {
+				resetSelect(states)
 
-			data.data.states.map((state) => {
-				const option = document.createElement('option')
-				option.innerText = state.name
-				states.append(option)
-			})
-			states.removeAttribute('disabled')
+				data.data.states.map((state) => {
+					const option = document.createElement('option')
+					option.innerText = state.name
+					states.append(option)
+				})
+				states.removeAttribute('disabled')
+			}
 		})
 		.catch((error) => {
 			console.warn(`Stupid network error! - ${error.message}`)
 		})
 		.finally(() => {
-			if (!cities.hasAttribute('disabled')) {
-				resetSelect(cities)
-				cities.setAttribute('disabled', '')
-			}
+			states.value === '' && resetSelect(cities)
+			cities.setAttribute('disabled', '')
 		})
 })
 
@@ -131,24 +134,28 @@ states.addEventListener('change', () => {
 		.then((data) => {
 			if (data.error) throw new Error('Something went wrong!')
 
-			resetSelect(cities)
+			if (!data.data.length) {
+				resetSelect(cities, 'null')
+				cities.setAttribute('disabled', '')
+			} else {
+				resetSelect(cities)
 
-			data.data.map((city) => {
-				const option = document.createElement('option')
-				option.innerText = city
-				cities.append(option)
-			})
-			cities.removeAttribute('disabled')
+				data.data.map((city) => {
+					const option = document.createElement('option')
+					option.innerText = city
+					cities.append(option)
+				})
+				cities.removeAttribute('disabled')
+			}
 		})
 		.catch((error) => {
 			console.warn(`Stupid network error! - ${error.message}`)
 		})
 })
 
-const resetSelect = (node) => {
-	while (node.children.length > 1) {
-		node.lastChild.remove()
-	}
+const resetSelect = (node, to = '') => {
+	node.value = to
+	node.length = 2
 }
 
 emailSwitch.addEventListener('change', () => {
@@ -168,59 +175,52 @@ const debounce = (func, timeout = 500) => {
 	}
 }
 
-// Validation functions
-const checkUsername = () => {
-	// Some db magic
+// Validator
+const validate = (id) => {
+	switch (id) {
+		case 'username':
+			// Some db magic
+			return
+		case 'firstName':
+			return firstName.value.match(/^[a-zA-Z]+$/)
+				? setValid(firstName)
+				: setInvalid(firstName)
+		case 'lastName':
+			return lastName.value.match(/^[a-zA-Z\s]*$/)
+				? setValid(lastName)
+				: setInvalid(lastName)
+		case 'phone':
+			return phone.value.match(/^[1-9]\d{9}$/)
+				? setValid(phone)
+				: setInvalid(phone)
+		case 'email':
+			return email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
+				? setValid(email)
+				: setInvalid(email)
+		case 'ageGroup':
+			return ageGroup.value ? setValid(ageGroup) : setInvalid(ageGroup)
+		case 'pincode':
+			return pincode.value.length === 0 || pincode.value.match(/^[1-9]\d{5}$/)
+				? setValid(pincode)
+				: setInvalid(pincode)
+		case 'countries':
+			return countries.value ? setValid(countries) : setInvalid(countries)
+		case 'states':
+			return states.value ? setValid(states) : setInvalid(states)
+		case 'cities':
+			return cities.value ? setValid(cities) : setInvalid(cities)
+		case 'desiredTeam':
+			return Array.from(desiredTeam).find((team) => team.checked)
+				? desiredTeam.forEach((team) => setValid(team))
+				: desiredTeam.forEach((team) => setInvalid(team))
+		case 'desiredPosition':
+			return Array.from(desiredPosition).find((position) => position.checked)
+				? desiredPosition.forEach((position) => setValid(position))
+				: desiredPosition.forEach((position) => setInvalid(position))
+	}
 }
 
-const validateFirstName = () =>
-	firstName.value.match(/^[a-zA-Z]+$/)
-		? setValid(firstName)
-		: setInvalid(firstName)
-
-const validateLastName = () =>
-	lastName.value.match(/^[a-zA-Z\s]*$/)
-		? setValid(lastName)
-		: setInvalid(lastName)
-
-const validatePhone = () =>
-	phone.value.match(/^[1-9]\d{9}$/) ? setValid(phone) : setInvalid(phone)
-
-const validateEmail = () =>
-	email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
-		? setValid(email)
-		: setInvalid(email)
-
-const validateAgeGroup = () =>
-	ageGroup.value ? setValid(ageGroup) : setInvalid(ageGroup)
-
-const validateDesiredTeam = () => {
-	Array.from(desiredTeam).find((team) => team.checked)
-		? desiredTeam.forEach((team) => setValid(team))
-		: desiredTeam.forEach((team) => setInvalid(team))
-}
-
-const validateDesiredPosition = () => {
-	Array.from(desiredPosition).find((position) => position.checked)
-		? desiredPosition.forEach((position) => setValid(position))
-		: desiredPosition.forEach((position) => setInvalid(position))
-}
-
-const validatePincode = () =>
-	pincode.value.length === 0 || pincode.value.match(/^[1-9]\d{5}$/)
-		? setValid(pincode)
-		: setInvalid(pincode)
-
-const validateCountry = () =>
-	countries.value ? setValid(countries) : setInvalid(countries)
-
-const validateState = () =>
-	states.value ? setValid(states) : setInvalid(states)
-
-const validateCity = () =>
-	cities.value ? setValid(cities) : setInvalid(cities)
-
-// Helpers for setting valid/invalid class to elements
+// Helpers for setting valid/invalid class to elements and flag the fields
 const setValid = (node) => {
 	node.classList.replace('is-invalid', 'is-valid') &&
 		setTimeout(() => {
@@ -247,6 +247,13 @@ const setInvalid = (node) => {
 	return false
 }
 
+// HTML encoder
+const htmlEncode = (str) => {
+	return String(str).replace(/[^\w. ]/gi, (c) => {
+		return '&#' + c.charCodeAt(0) + ';'
+	})
+}
+
 // Event listeners for validations
 userName.addEventListener('input', () => {
 	// Left off as per backend implementation
@@ -254,44 +261,44 @@ userName.addEventListener('input', () => {
 
 firstName.addEventListener(
 	'input',
-	debounce(() => validateFirstName())
+	debounce(() => validate('firstName'))
 )
 
 lastName.addEventListener(
 	'input',
-	debounce(() => validateLastName())
+	debounce(() => validate('lastName'))
 )
 
 phone.addEventListener(
 	'input',
-	debounce(() => validatePhone())
+	debounce(() => validate('phone'))
 )
 
 email.addEventListener(
 	'input',
-	debounce(() => validateEmail())
+	debounce(() => validate('email'))
 )
 
-ageGroup.addEventListener('change', validateAgeGroup)
+ageGroup.addEventListener('change', () => validate('ageGroup'))
 
 desiredTeam.forEach((team) =>
-	team.addEventListener('change', validateDesiredTeam)
+	team.addEventListener('change', () => validate('desiredTeam'))
 )
 
 desiredPosition.forEach((position) =>
-	position.addEventListener('change', validateDesiredPosition)
+	position.addEventListener('change', () => validate('desiredPosition'))
 )
 
 pincode.addEventListener(
 	'input',
-	debounce(() => validatePincode())
+	debounce(() => validate('pincode'))
 )
 
-countries.addEventListener('change', validateCountry)
+countries.addEventListener('change', () => validate('countries'))
 
-states.addEventListener('change', validateState)
+states.addEventListener('change', () => validate('states'))
 
-cities.addEventListener('change', validateCity)
+cities.addEventListener('change', () => validate('cities'))
 
 // Event listener for form submission
 form.addEventListener('submit', (event) => {
