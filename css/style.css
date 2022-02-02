@@ -27,13 +27,17 @@ sup {
 .btn-success {
 	background-color: #28a747;
 }
-.btn-success:hover {
-	background-color: #228f3d;
-}
+.btn-success:hover,
 .btn-success:focus {
 	background-color: #228f3d;
 }
 .col-md-4,
 .col-md-3 {
 	padding: 17px;
+}
+
+@media (min-width: 768px) {
+	.border-right {
+		border-right: 1px solid #dee2e6;
+	}
 }
