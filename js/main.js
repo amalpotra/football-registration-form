@@ -156,6 +156,9 @@ states.addEventListener('change', () => {
 const resetSelect = (node, to = '') => {
 	node.value = to
 	node.length = 2
+
+	// Trigger event after changing it's value
+	to !== '' && node.dispatchEvent(new Event('change'))
 }
 
 emailSwitch.addEventListener('change', () => {
