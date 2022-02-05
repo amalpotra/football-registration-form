@@ -54,11 +54,11 @@
                 <div class="col-md-4 border-bottom">
                     <label for="ageGroup" class="form-label">AGE GROUP <sup class="text-danger">*</sup></label>
                     <select class="form-select" aria-label="ageGroup" id="ageGroup">
-                        <option value="" selected disabled hidden>Select age group</option>
-                        <option value="15 - 20">15 - 20 years</option>
-                        <option value="21 - 30">21 - 30 years</option>
-                        <option value="31 - 40">31 - 40 years</option>
-                        <option value="41 - 50">41 - 50 years</option>
+                        <option value="0" selected disabled hidden>Select age group</option>
+                        <option value="1">15 - 20 years</option>
+                        <option value="2">21 - 30 years</option>
+                        <option value="3">31 - 40 years</option>
+                        <option value="4">41 - 50 years</option>
                     </select>
                     <div class="invalid-feedback">Age group is required.</div>
                 </div>
@@ -143,23 +143,23 @@
                 <div class="form-group my-2">
                     <label for="country" class="form-label">COUNTRY <sup class="text-danger">*</sup></label>
                     <select class="form-select" aria-label="Country" id="country" disabled>
-                        <option value="" selected disabled hidden>Select the country</option>
+                        <option value="0" selected disabled hidden>Select the country</option>
                     </select>
                     <div class="invalid-feedback">Country is required.</div>
                 </div>
                 <div class="form-group my-2">
                     <label for="state" class="form-label">STATE <sup class="text-danger">*</sup></label>
                     <select class="form-select" aria-label="State" id="state" disabled>
-                        <option value="" selected disabled hidden>Select the state</option>
-                        <option value="null" disabled hidden>No state available</option>
+                        <option value="0" selected disabled hidden>Select the state</option>
+                        <option value="-1" disabled hidden>No state available</option>
                     </select>
                     <div class="invalid-feedback">State is required.</div>
                 </div>
                 <div class="form-group my-2 mb-5">
                     <label for="city" class="form-label">CITY <sup class="text-danger">*</sup></label>
                     <select class="form-select" aria-label="City" id="city" disabled>
-                        <option value="" selected disabled hidden>Select the city</option>
-                        <option value="null" disabled hidden>No city available</option>
+                        <option value="0" selected disabled hidden>Select the city</option>
+                        <option value="-1" disabled hidden>No city available</option>
                     </select>
                     <div class="invalid-feedback">City is required.</div>
                 </div>

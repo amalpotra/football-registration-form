@@ -18,8 +18,6 @@ const cities = id('city')
 const form = id('form')
 const submitButton = id('submitButton')
 
-const countryData = []
-
 const validFields = [
 	{ name: 'firstName', isValid: false },
 	{ name: 'lastName', isValid: true },
@@ -46,19 +44,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			data.data
 				.filter((country) => !country.dial_code.includes(' '))
-				.map((country) => {
+				.map((country, index) => {
 					const optionCode = document.createElement('option')
 					const optionCountry = document.createElement('option')
-
-					countryData.push({ name: country.name, dial_code: country.dial_code })
 
 					optionCode.innerText = `${country.dial_code.padEnd(7, '\u2002')} - ${
 						country.name
 					}`
-					optionCode.setAttribute('value', country.dial_code)
+					optionCode.setAttribute('value', index + 1)
 					countryCodes.append(optionCode)
 
 					optionCountry.innerText = country.name
+					optionCountry.setAttribute('value', index + 1)
 					countries.append(optionCountry)
 				})
 
@@ -66,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			countries.removeAttribute('disabled')
 
 			// Setting +91 as default and carry usual event triggering
-			countryCodes.value = '+91'
+			countryCodes.value = '90'
 			countryCodes.dispatchEvent(new Event('change'))
 		})
 		.catch((error) => {
@@ -78,9 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 countryCodes.addEventListener('change', () => {
-	countries.value = countryData.find(
-		(country) => country.dial_code === countryCodes.value
-	).name
+	countries.value = countryCodes.value
 	countries.dispatchEvent(new Event('change'))
 })
 
@@ -90,7 +85,9 @@ countries.addEventListener('change', () => {
 		headers: {
 			'Content-Type': 'application/json',
 		},
-		body: JSON.stringify({ country: countries.value }),
+		body: JSON.stringify({
+			country: countries.options[countries.selectedIndex].text,
+		}),
 		redirect: 'follow',
 	})
 		.then((response) => response.json())
@@ -98,15 +95,16 @@ countries.addEventListener('change', () => {
 			if (data.error) throw new Error('Something went wrong!')
 
 			if (!data.data.states.length) {
-				resetSelect(states, 'null')
-				resetSelect(cities, 'null')
+				resetSelect(states, '-1')
+				resetSelect(cities, '-1')
 				states.setAttribute('disabled', '')
 			} else {
 				resetSelect(states)
 
-				data.data.states.map((state) => {
+				data.data.states.map((state, index) => {
 					const option = document.createElement('option')
 					option.innerText = state.name
+					option.setAttribute('value', index + 1)
 					states.append(option)
 				})
 				states.removeAttribute('disabled')
@@ -116,8 +114,10 @@ countries.addEventListener('change', () => {
 			console.warn(`Stupid network error! - ${error.message}`)
 		})
 		.finally(() => {
-			states.value === '' && resetSelect(cities)
+			states.value === '0' && resetSelect(cities)
 			cities.setAttribute('disabled', '')
+
+			validate('country')
 		})
 })
 
@@ -127,7 +127,10 @@ states.addEventListener('change', () => {
 		headers: {
 			'Content-Type': 'application/json',
 		},
-		body: JSON.stringify({ country: countries.value, state: states.value }),
+		body: JSON.stringify({
+			country: countries.options[countries.selectedIndex].text,
+			state: states.options[states.selectedIndex].text,
+		}),
 		redirect: 'follow',
 	})
 		.then((response) => response.json())
@@ -135,14 +138,15 @@ states.addEventListener('change', () => {
 			if (data.error) throw new Error('Something went wrong!')
 
 			if (!data.data.length) {
-				resetSelect(cities, 'null')
+				resetSelect(cities, '-1')
 				cities.setAttribute('disabled', '')
 			} else {
 				resetSelect(cities)
 
-				data.data.map((city) => {
+				data.data.map((city, index) => {
 					const option = document.createElement('option')
 					option.innerText = city
+					option.setAttribute('value', index + 1)
 					cities.append(option)
 				})
 				cities.removeAttribute('disabled')
@@ -151,14 +155,24 @@ states.addEventListener('change', () => {
 		.catch((error) => {
 			console.warn(`Stupid network error! - ${error.message}`)
 		})
+		.finally(() => {
+			validate('state')
+		})
 })
 
-const resetSelect = (node, to = '') => {
+const resetSelect = (node, to = '0') => {
 	node.value = to
 	node.length = 2
 
-	// Trigger event after changing it's value
-	to !== '' && node.dispatchEvent(new Event('change'))
+	// Update their status flags after changing the values, showing no invalid message
+	if (to === '0') {
+		validFields.find((field) => field.name === node.id).isValid = false
+		submitButton.setAttribute('disabled', '')
+	} else {
+		validFields.find((field) => field.name === node.id).isValid = true
+		!validFields.find((field) => field.isValid === false) &&
+			submitButton.removeAttribute('disabled')
+	}
 }
 
 emailSwitch.addEventListener('change', () => {
@@ -206,12 +220,14 @@ const validate = (id) => {
 			return pincode.value.length === 0 || pincode.value.match(/^[1-9]\d{5}$/)
 				? setValid(pincode)
 				: setInvalid(pincode)
-		case 'countries':
-			return countries.value ? setValid(countries) : setInvalid(countries)
-		case 'states':
-			return states.value ? setValid(states) : setInvalid(states)
-		case 'cities':
-			return cities.value ? setValid(cities) : setInvalid(cities)
+		case 'country':
+			return countries.value !== '0'
+				? setValid(countries)
+				: setInvalid(countries)
+		case 'state':
+			return states.value !== '0' ? setValid(states) : setInvalid(states)
+		case 'city':
+			return cities.value !== '0' ? setValid(cities) : setInvalid(cities)
 		case 'desiredTeam':
 			return Array.from(desiredTeam).find((team) => team.checked)
 				? desiredTeam.forEach((team) => setValid(team))
@@ -297,11 +313,7 @@ pincode.addEventListener(
 	debounce(() => validate('pincode'))
 )
 
-countries.addEventListener('change', () => validate('countries'))
-
-states.addEventListener('change', () => validate('states'))
-
-cities.addEventListener('change', () => validate('cities'))
+cities.addEventListener('change', () => validate('city'))
 
 // Event listener for form submission
 form.addEventListener('submit', (event) => {
