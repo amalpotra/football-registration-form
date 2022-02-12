@@ -35,9 +35,26 @@ sup {
 .col-md-3 {
 	padding: 17px;
 }
+.alerts {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 1;
+}
+.alerts .alert {
+	position: absolute;
+	width: 100%;
+}
 
 @media (min-width: 768px) {
 	.border-right {
 		border-right: 1px solid #dee2e6;
+	}
+	.alerts {
+		top: 1rem;
+	}
+	.alerts .alert {
+		width: max-content;
+		right: 1rem;
 	}
 }
