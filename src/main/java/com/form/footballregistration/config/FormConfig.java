@@ -28,7 +28,7 @@ public class FormConfig {
                     new Position[] {Position.GOAL_KEEPER, Position.OFFENSIVE},
                     new Address(
                             "Lane 1, Street A",
-                            123456,
+                            "123456",
                             90,
                             1,
                             1

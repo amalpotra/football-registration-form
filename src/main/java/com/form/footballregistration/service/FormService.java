@@ -1,4 +1,4 @@
-package com.form.footballregistration.services;
+package com.form.footballregistration.service;
 
 import com.form.footballregistration.entity.Form;
 import com.form.footballregistration.exception.ResourceConflictException;
@@ -38,7 +38,7 @@ public class FormService {
             throw new ResourceConflictException("User already exists!");
         }
         formRepository.save(form);
-        return ResponseHandler.generateResponse("Registered successfully!", HttpStatus.CREATED);
+        return ResponseHandler.generateResponse("Registered successfully", HttpStatus.CREATED);
     }
 
     public ResponseEntity<?> updateUser(@RequestParam String userName, @RequestBody @Valid Form form) {
@@ -57,7 +57,7 @@ public class FormService {
                     form.getDesiredPosition(),
                     form.getAddress()
             ));
-            return ResponseHandler.generateResponse("Updated successfully!", HttpStatus.OK);
+            return ResponseHandler.generateResponse("Updated successfully", HttpStatus.OK);
         }
         throw new ResourceNotFoundException("User not found!");
     }

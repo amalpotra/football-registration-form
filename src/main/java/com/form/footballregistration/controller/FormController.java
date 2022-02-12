@@ -1,7 +1,7 @@
 package com.form.footballregistration.controller;
 
 import com.form.footballregistration.entity.Form;
-import com.form.footballregistration.services.FormService;
+import com.form.footballregistration.service.FormService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

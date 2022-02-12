@@ -8,6 +8,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.safety.Safelist;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Data
 @NoArgsConstructor
@@ -15,8 +16,11 @@ import javax.validation.constraints.NotNull;
 public class Address {
     private String address;
 
-    @Range(min = 100000, max = 999999, message = "pincode is invalid")
-    private int pincode;
+    @Pattern(
+            regexp = "^$|[1-9][0-9]{5}$",
+            message = "pincode is invalid"
+    )
+    private String pincode;
 
     @NotNull
     @Range(min = 1, max = 999, message = "country is invalid")
