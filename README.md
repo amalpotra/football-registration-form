@@ -46,7 +46,6 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -75,14 +74,14 @@ Of course, a lot of other things are there, but will know more about them later 
 
 ### Built With
 
-Here are some major technologies, frameworks, libraries or plugins used to bootstrap this project. For any suggestions or requests, feel free to <a href="https://github.com/amarjeetmalpotra/football-registration/issues">Request Feature</a>.
+Here are some major technologies, frameworks, libraries or plugins used to bootstrap this project. For any suggestions, feel free to <a href="https://github.com/amarjeetmalpotra/football-registration/issues">Request Feature</a>.
 <br /> <br/>
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
 
-### Aditional dependencies
+### Additional dependencies
 
 - [CountriesNow API](https://countriesnow.space), for Countries, States, Cities and their dial codes.
 
@@ -155,7 +154,7 @@ Don't forget to give the project a star! Thanks again!
 
 ## License
 
-Distributed under the GPL-3.0 License. See `LICENSE.md` for more information.
+Distributed under the GPL-v3.0 License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

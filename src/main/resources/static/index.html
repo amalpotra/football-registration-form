@@ -11,14 +11,40 @@
 </head>
 
 <body>
+    <div class="alerts">
+        <div class="alert alert-warning alert-dismissible fade shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img"
+                aria-label="Warning:">
+                <path
+                    d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+            </svg>
+            <strong>Oops! </strong><span id="alert-warning-message"></span>
+            <button type="button" class="btn-close"></button>
+        </div>
+        <div class="alert alert-success alert-dismissible fade shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img"
+                aria-label="Success:">
+                <path
+                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+            </svg>
+            <strong>Yay! </strong><span id="alert-success-message"></span>
+            <button type="button" class="btn-close"></button>
+        </div>
+    </div>
     <h2 class="text-center mt-3 mb-4">Football Registration Form</h2>
     <div class="container rounded border bg-white mb-4">
         <form id="form" novalidate>
             <div class="row">
                 <div class="col-md-4 border-bottom border-right">
                     <label for="userName" class="form-label">USERNAME <sup class="text-danger">*</sup></label>
-                    <input type="text" class="form-control" id="userName" placeholder="Enter username" />
-                    <div class="invalid-feedback">Username is already taken.</div>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="userName" placeholder="Enter username" />
+                        <button type="button" class="btn btn-success rounded-end" id="getButton" disabled>Get
+                            Details</button>
+                        <div class="invalid-feedback">Valid username is required.</div>
+                    </div>
                 </div>
                 <div class="col-md-4 border-bottom border-right"> <label for="firstName" class="form-label">FIRST NAME
                         <sup class="text-danger">*</sup></label>
@@ -55,10 +81,10 @@
                     <label for="ageGroup" class="form-label">AGE GROUP <sup class="text-danger">*</sup></label>
                     <select class="form-select" aria-label="ageGroup" id="ageGroup">
                         <option value="0" selected disabled hidden>Select age group</option>
-                        <option value="1">15 - 20 years</option>
-                        <option value="2">21 - 30 years</option>
-                        <option value="3">31 - 40 years</option>
-                        <option value="4">41 - 50 years</option>
+                        <option value="GROUP_15_20">15 - 20 years</option>
+                        <option value="GROUP_21_30">21 - 30 years</option>
+                        <option value="GROUP_31_40">31 - 40 years</option>
+                        <option value="GROUP_41_50">41 - 50 years</option>
                     </select>
                     <div class="invalid-feedback">Age group is required.</div>
                 </div>
@@ -67,28 +93,28 @@
                 <div class="col-md-3 border-bottom border-right">
                     <label for="desiredTeam" class="form-label">DESIRED TEAM <sup class="text-danger">*</sup></label>
                     <div class="form-check mb-3 mt-2">
-                        <input class="form-check-input" type="radio" name="desiredTeam" id="chelsea" value="Chelsea">
+                        <input class="form-check-input" type="radio" name="desiredTeam" id="chelsea" value="CHELSEA">
                         <label class="form-check-label" for="chelsea">
                             CHELSEA
                         </label>
                     </div>
                     <div class="form-check mb-3">
                         <input class="form-check-input" type="radio" name="desiredTeam" id="manchester-united"
-                            value="Manchester United">
+                            value="MANCHESTER_UNITED">
                         <label class="form-check-label" for="manchester-united">
                             MANCHESTER UNITED
                         </label>
                     </div>
                     <div class="form-check mb-3">
                         <input class="form-check-input" type="radio" name="desiredTeam" id="liverpool"
-                            value="Liverpool">
+                            value="LIVERPOOL">
                         <label class="form-check-label" for="liverpool">
                             LIVERPOOL
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="desiredTeam" id="barcelona"
-                            value="Barcelona">
+                            value="BARCELONA">
                         <label class="form-check-label" for="barcelona">
                             BARCELONA
                         </label>
@@ -99,28 +125,28 @@
                     <label for="desiredPosition" class="form-label">DESIRED POSITION <sup
                             class="text-danger">*</sup></label>
                     <div class="form-check mb-3 mt-2">
-                        <input class="form-check-input" type="checkbox" name="desiredPosition" value="goal-keeper"
+                        <input class="form-check-input" type="checkbox" name="desiredPosition" value="GOAL_KEEPER"
                             id="goal-keeper">
                         <label class="form-check-label" for="goal-keeper">
                             GOAL KEEPER
                         </label>
                     </div>
                     <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" name="desiredPosition" value="offensive"
+                        <input class="form-check-input" type="checkbox" name="desiredPosition" value="OFFENSIVE"
                             id="offensive">
                         <label class="form-check-label" for="offensive">
                             OFFENSIVE
                         </label>
                     </div>
                     <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" name="desiredPosition" value="defensive"
+                        <input class="form-check-input" type="checkbox" name="desiredPosition" value="DEFENSIVE"
                             id="defensive">
                         <label class="form-check-label" for="defensive">
                             DEFENSIVE
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="desiredPosition" value="receiver"
+                        <input class="form-check-input" type="checkbox" name="desiredPosition" value="RECEIVER"
                             id="receiver">
                         <label class="form-check-label" for="receiver">
                             RECEIVER
@@ -166,9 +192,12 @@
             </div>
             <div class="d-grid col-md-4 mx-auto">
                 <button class="btn btn-success" id="submitButton" disabled>Phewww! Let's submit it</button>
+                <button class="btn btn-success" id="updateButton" type="button" disabled hidden>Update details</button>
             </div>
         </form>
     </div>
+    <script src="js/helper.js"></script>
+    <script src="js/rest.js"></script>
     <script src="js/main.js"></script>
 </body>
 
