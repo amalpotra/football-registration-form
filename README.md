@@ -58,7 +58,7 @@
 
 ## About The Project
 
-![Football Registration](https://user-images.githubusercontent.com/36320943/152296207-0230bedf-7700-4749-b609-71a69ed996fe.png)
+![Football Registration](https://user-images.githubusercontent.com/36320943/153801178-3509bb22-bc66-4736-a97e-4b52226ba1e5.png)
 
 Preparing a Football Registration Form in which the user will be able to enter various details to register for a Football tournament.
 
@@ -80,10 +80,15 @@ Here are some major technologies, frameworks, libraries or plugins used to boots
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
+![SQL Server](https://img.shields.io/badge/Microsoft_SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
 
 ### Additional dependencies
 
 - [CountriesNow API](https://countriesnow.space), for Countries, States, Cities and their dial codes.
+- [Spring data JPA](https://spring.io/projects/spring-data-jpa), provides abstraction that makes working with the JPA provider less verbose.
+- [Lombok](https://projectlombok.org), for minimizing/removing the boilerplate code.
+- [Jsoup](https://jsoup.org), for sanitizing untrusted HTML (to prevent XSS).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -96,21 +101,51 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-Right now we don't have such major prerequisites so, feel free to continue with installation.
+Before getting started, we need to set few things up.
+
+1. Make sure you have JDK 11+ and related path in place and could confirm this
+
+   ```sh
+   java --version
+   ```
+
+2. Make sure you have Microsoft SQL Server installed and then setup the database
+   - Open Microsoft SQL Server Management Studio.
+   - From the side panel, right click Databases and select New Database.
+   - Name the database as `football_registration`
+   - And finally, you need to your db credentials in `application.properties` file.
+   - Alternatively, you can specify your existing database and make changes to `application.properties` file accordingly.
+3. Make sure you have an IDE available as well, preferably IntelliJ IDEA to ease up things a lot.
+
+And now we are ready to roll.
 
 ### Installation
 
-So, this is how we can install and set up our app.
+So, this is how we can install and set things up.
 
 1. Clone the repo
+
    ```sh
    git clone https://github.com/amarjeetmalpotra/football-registration.git
    ```
-2. Go to football-registration directory and open
+
+2. Open the directory `football-registration` as a project in IntelliJ IDEA
+
+3. You can now straight away Run or Debug from the top left corner in IntelliJ IDEA
+
+4. For non IntelliJ IDEA users or to run from command line
+
    ```sh
-   index.html
+   gradlew bootRun
    ```
-3. Many more steps to come, but right now that's all we want 😄
+
+5. Open your favourite web browser and navigate to `localhost:8080`
+
+And this should bring you to the registration form 😉
+
+### A word of warning!
+
+In `application.properties` file, Hibernate ddl auto is set to `create-drop` which is for development use, for production consider setting it to `validate` or just remove that property.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -122,10 +157,11 @@ So, this is how we can install and set up our app.
   - [x] Setting up structure
   - [x] Cover up UI
   - [x] Setup client side validations
-- [ ] Back-end
-  - [ ] Setup db schema
-  - [ ] Setup server side validations
-  - [ ] Functionality to retrieve data
+- [x] Back-end
+  - [x] Setup REST architecture
+  - [x] Setting up entities and DTOs
+  - [x] Endpoint validation and sanitzations
+- [ ] Optimizations
 
 (Subject to change)
 
@@ -179,5 +215,9 @@ Below is the list of resources I found helpful and would like to give credit to.
 - [GitHub Pages](https://pages.github.com)
 - [Bootstrap](https://getbootstrap.com)
 - [CountriesNow API](https://countriesNow.space)
+- [Project Lombok](https://projectlombok.org)
+- [Jsoup](https://jsoup.org)
+- [Baeldung](https://www.baeldung.com)
+- [Postman](https://www.postman.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
