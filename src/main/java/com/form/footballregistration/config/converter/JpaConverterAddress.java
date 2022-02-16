@@ -7,6 +7,7 @@ import com.form.footballregistration.entity.child.Address;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 import java.io.IOException;
+import java.util.Objects;
 
 @Converter
 public class JpaConverterAddress implements AttributeConverter<Address, String> {
@@ -15,7 +16,7 @@ public class JpaConverterAddress implements AttributeConverter<Address, String> 
     @Override
     public String convertToDatabaseColumn(Address meta) {
         try {
-            if (meta == null) {
+            if (Objects.isNull(meta)) {
                 return null;
             }
             return objectMapper.writeValueAsString(meta);
@@ -27,7 +28,7 @@ public class JpaConverterAddress implements AttributeConverter<Address, String> 
     @Override
     public Address convertToEntityAttribute(String dbData) {
         try {
-            if (dbData == null) {
+            if (Objects.isNull(dbData)) {
                 return null;
             }
             return objectMapper.readValue(dbData, Address.class);

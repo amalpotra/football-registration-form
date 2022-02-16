@@ -169,7 +169,7 @@ const showMessage = (node, message) => {
 	clearTimeout(messageTimeout)
 	messageTimeout = setTimeout(
 		() => node.parentElement.classList.remove('show'),
-		3000
+		4000
 	)
 }
 

@@ -8,6 +8,7 @@ import com.form.footballregistration.entity.child.Position;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 import java.io.IOException;
+import java.util.Objects;
 
 @Converter
 public class JpaConverterPosition implements AttributeConverter<Position[], String> {
@@ -16,7 +17,7 @@ public class JpaConverterPosition implements AttributeConverter<Position[], Stri
     @Override
     public String convertToDatabaseColumn(Position[] meta) {
         try {
-            if (meta == null) {
+            if (Objects.isNull(meta)) {
                 return null;
             }
             return objectMapper.configure(SerializationFeature.WRITE_ENUMS_USING_INDEX,true).writeValueAsString(meta);
@@ -28,7 +29,7 @@ public class JpaConverterPosition implements AttributeConverter<Position[], Stri
     @Override
     public Position[] convertToEntityAttribute(String dbData) {
         try {
-            if (dbData == null) {
+            if (Objects.isNull(dbData)) {
                 return null;
             }
             return objectMapper.readValue(dbData, Position[].class);
