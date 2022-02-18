@@ -37,24 +37,24 @@ const getUser = (userName) => {
 
 const fillDetails = () => {
 	firstName.value = userData.firstName
-	validate('firstName')
+	setValid(firstName)
 
 	lastName.value = userData.lastName ?? ''
-	validate('lastName')
+	setValid(lastName)
 
 	countryCodes.value = userData.countryCode
 
 	phone.value = userData.phone
-	validate('phone')
+	setValid(phone)
 
 	email.value = userData.email
-	validate('email')
+	setValid(email)
 
 	ageGroup.value = userData.ageGroup
-	validate('ageGroup')
+	setValid(ageGroup)
 
 	desiredTeam.find((team) => team.value === userData.desiredTeam).checked = true
-	validate('desiredTeam')
+	desiredTeam.forEach((team) => setValid(team))
 
 	desiredPosition.forEach((position) => (position.checked = false))
 	userData.desiredPosition.forEach((userPos) => {
@@ -62,15 +62,15 @@ const fillDetails = () => {
 			(position) => position.value === userPos
 		).checked = true
 	})
-	validate('desiredPosition')
+	desiredPosition.forEach((position) => setValid(position))
 
 	address.value = userData.address.address ?? ''
 
 	pincode.value = userData.address.pincode ?? ''
-	validate('pincode')
+	setValid(pincode)
 
 	countries.value = userData.address.country
-	validate('country')
+	setValid(countries)
 
 	// Fetch states accordingly
 	fetch('https://countriesnow.space/api/v0.1/countries/states', {
@@ -94,7 +94,7 @@ const fillDetails = () => {
 				})
 				states.value = userData.address.state
 				states.removeAttribute('disabled')
-				validate('state')
+				setValid(states)
 
 				// Fetch cities accordingly
 				fetch('https://countriesnow.space/api/v0.1/countries/state/cities', {
@@ -119,7 +119,7 @@ const fillDetails = () => {
 							})
 							cities.value = userData.address.city
 							cities.removeAttribute('disabled')
-							validate('city')
+							setValid(cities)
 						}
 					})
 					.catch(() => showMessage(warningMessage, 'Stupid network error'))
