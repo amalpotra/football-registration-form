@@ -1,6 +1,6 @@
 package com.form.footballregistration.config;
 
-import com.form.footballregistration.entity.*;
+import com.form.footballregistration.entity.Form;
 import com.form.footballregistration.entity.child.Address;
 import com.form.footballregistration.entity.child.AgeGroup;
 import com.form.footballregistration.entity.child.Position;

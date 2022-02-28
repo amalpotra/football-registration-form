@@ -2,7 +2,7 @@
   <configuration default="false" name="FootballRegistration" type="Application" factoryName="Application">
     <option name="ALTERNATIVE_JRE_PATH" value="11" />
     <option name="MAIN_CLASS_NAME" value="com.form.footballregistration.FootballRegistrationApplication" />
-    <module name="Football_Registration.main" />
+    <module name="FootballRegistration.main" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="com.form.footballregistration.*" />
