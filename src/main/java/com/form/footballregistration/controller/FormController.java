@@ -23,17 +23,17 @@ public class FormController {
         this.formService = formService;
     }
 
-    @GetMapping("/form/{userName}")
+    @GetMapping("/footballForm/{userName}")
     public ResponseEntity<?> getUser(@PathVariable("userName") @Pattern(regexp = "^[a-zA-Z]+$", message = "userName is invalid") String userName) {
         return formService.getUser(userName);
     }
 
-    @PostMapping(value = "/form", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/footballForm", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> registerUser(@Valid @RequestBody Form form) {
         return formService.registerUser(form);
     }
 
-    @PutMapping(value = "/form/{userName}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/footballForm/{userName}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> updateUser(
             @PathVariable("userName") @Pattern(regexp = "^[a-zA-Z]+$",
                     message = "userName is invalid") String userName, @Valid @RequestBody Form form) {

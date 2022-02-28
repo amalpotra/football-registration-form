@@ -1,7 +1,7 @@
 let userData
 
 const registerUser = (formData) => {
-	fetch('/api/v1/form', {
+	fetch('api/v1/footballForm', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -21,7 +21,7 @@ const registerUser = (formData) => {
 }
 
 const getUser = (userName) => {
-	fetch(`/api/v1/form/${userName}`)
+	fetch(`api/v1/footballForm/${userName}`)
 		.then((response) => response.json())
 		.then((data) => {
 			if (!data.status) {
@@ -129,7 +129,7 @@ const fillDetails = () => {
 }
 
 const updateUser = (userName, formData) => {
-	fetch(`/api/v1/form/${userName}`, {
+	fetch(`api/v1/footballForm/${userName}`, {
 		method: 'PUT',
 		headers: {
 			'Content-Type': 'application/json',
