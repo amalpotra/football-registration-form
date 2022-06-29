@@ -11,20 +11,20 @@
     <p align="center">
         <h4>Registering for a football club by filling up the registration form.</h4>
         <!-- PROJECT SHIELDS -->
-        <a href="https://open.vscode.dev/amarjeetmalpotra/football-registration">
-            <img src="https://open.vscode.dev/badges/open-in-vscode.svg" alt="VS Code"></img>
+        <a href="https://open.vscode.dev/amarjeetmalpotra/football-registration-form">
+            <img src="https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20VSCode&labelColor=2c2c32&color=007acc&logoColor=007acc" alt="VS Code"></img>
         </a>
         <a href="https://github.com/amarjeetmalpotra">
             <img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103" alt="Open source"></img>
         </a>
-        <a href="https://gitHub.com/amarjeetmalpotra/football-registration/commits/">
-            <img src="https://badgen.net/github/commits/amarjeetmalpotra/football-registration" alt="Commits"></img>
+        <a href="https://gitHub.com/amarjeetmalpotra/football-registration-form/commits/">
+            <img src="https://badgen.net/github/commits/amarjeetmalpotra/football-registration-form" alt="Commits"></img>
         </a>
-        <a href="https://gitHub.com/amarjeetmalpotra/football-registration/commit/">
-            <img src="https://badgen.net/github/last-commit/amarjeetmalpotra/football-registration" alt="Commit"></img>
+        <a href="https://gitHub.com/amarjeetmalpotra/football-registration-form/commit/">
+            <img src="https://badgen.net/github/last-commit/amarjeetmalpotra/football-registration-form" alt="Commit"></img>
         </a><br />
-        <a href="https://github.com/amarjeetmalpotra/football-registration/issues">Report Bug</a> ·
-        <a href="https://github.com/amarjeetmalpotra/football-registration/issues">Request Feature</a>
+        <a href="https://github.com/amarjeetmalpotra/football-registration-form/issues">Report Bug</a> ·
+        <a href="https://github.com/amarjeetmalpotra/football-registration-form/issues">Request Feature</a>
     </p>
 </div>
 
@@ -74,7 +74,7 @@ Of course, a lot of other things are there, but will know more about them later 
 
 ### Built With
 
-Here are some major technologies, frameworks, libraries or plugins used to bootstrap this project. For any suggestions, feel free to <a href="https://github.com/amarjeetmalpotra/football-registration/issues">Request Feature</a>.
+Here are some major technologies, frameworks, libraries or plugins used to bootstrap this project. For any suggestions, feel free to <a href="https://github.com/amarjeetmalpotra/football-registration-form/issues">Request Feature</a>.
 <br /> <br/>
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
@@ -126,10 +126,10 @@ So, this is how we can install and set things up.
 1. Clone the repo
 
    ```sh
-   git clone https://github.com/amarjeetmalpotra/football-registration.git
+   git clone https://github.com/amarjeetmalpotra/football-registration-form.git
    ```
 
-2. Open the directory `football-registration` as a project in IntelliJ IDEA
+2. Open the directory `football-registration-form` as a project in IntelliJ IDEA
 
 3. You can now straight away Run or Debug from the top left corner in IntelliJ IDEA
 
@@ -165,7 +165,7 @@ In `application.properties` file, Hibernate ddl auto is set to `create-drop` whi
 
 (Subject to change)
 
-See the [open issues](https://github.com/amarjeetmalpotra/football-registration/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/amarjeetmalpotra/football-registration-form/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -200,7 +200,7 @@ Distributed under the GPL-v3.0 License. See `LICENSE` for more information.
 
 Amarjeet Malpotra - LinkedIn [@malpotra](https://linkedin.com/in/malpotra) - [amarjeetmalpotra.github.io](https://amarjeetmalpotra.github.io)
 
-Project Link: [https://github.com/amarjeetmalpotra/football-registration](https://github.com/amarjeetmalpotra/football-registration)
+Project Link: [https://github.com/amarjeetmalpotra/football-registration-form](https://github.com/amarjeetmalpotra/football-registration-form)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
